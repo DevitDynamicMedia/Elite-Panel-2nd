@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | LuxeWall Panels</title>
+    <meta name="description" content="Learn about LuxeWall's commitment to crafting exceptional wall solutions with passion and precision.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --warm-terracotta: hsl(15, 70%, 50%);
+            --warm-gold: hsl(45, 85%, 60%);
+            --warm-walnut: hsl(25, 35%, 30%);
+            --warm-beige: hsl(35, 40%, 85%);
+            --warm-cream: hsl(40, 25%, 95%);
+            --foreground: hsl(25, 35%, 20%);
+            --muted-foreground: hsl(25, 20%, 45%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--warm-cream);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--warm-terracotta);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--foreground);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--warm-terracotta);
+        }
+        
+        .page-hero {
+            background: var(--warm-terracotta);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            max-width: 900px;
+            margin: 5rem auto;
+        }
+        
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--foreground);
+        }
+        
+        .content-section p {
+            font-size: 1.15rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .values-section {
+            margin: 5rem 0;
+        }
+        
+        .values-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            text-align: center;
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(199, 74, 51, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--foreground);
+        }
+        
+        .value-card p {
+            color: var(--muted-foreground);
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            background: linear-gradient(180deg, var(--warm-cream), var(--warm-beige));
+            border-radius: 2rem;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 5rem 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.15rem;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--warm-terracotta);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--warm-walnut);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background: var(--warm-walnut);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">LuxeWall</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="inspiration.html">Inspiration</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1>About LuxeWall</h1>
+            <p>Crafting exceptional wall solutions with passion and precision since 2010</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-section">
+            <h2>Our Story</h2>
+            <p>
+                LuxeWall was born from a simple belief: every space deserves to tell a story through its walls. What began as a small workshop crafting custom wood panels has blossomed into a leading provider of premium wall solutions.
+            </p>
+            <p>
+                Today, we offer over 30 distinctive designs, each available in multiple exquisite finishes. From timeless classics to contemporary statements, our collection reflects years of refinement and an unwavering commitment to quality.
+            </p>
+            <p>
+                Every panel we create is more than just a product—it's an invitation to transform your space into something extraordinary. We believe in the power of natural materials, sustainable practices, and the artistry of handcrafted details.
+            </p>
+        </div>
+
+        <div class="values-section">
+            <h2>What Drives Us</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">❤️</div>
+                    <h3>Passion</h3>
+                    <p>Every panel is crafted with genuine care and attention to detail</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🌿</div>
+                    <h3>Sustainability</h3>
+                    <p>Committed to eco-friendly materials and responsible sourcing</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🏆</div>
+                    <h3>Excellence</h3>
+                    <p>Uncompromising quality standards in every product we create</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Partnership</h3>
+                    <p>Building lasting relationships with customers and craftspeople</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Let's Create Something Beautiful Together</h2>
+            <p>Have questions? Need guidance? Our team is here to help you find the perfect wall solution.</p>
+            <a href="contact.html" class="btn">Get in Touch</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 LuxeWall Panels. All rights reserved.</p>
+    </footer>
+</body>
+</html>
