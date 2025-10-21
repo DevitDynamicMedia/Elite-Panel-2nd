@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | LuxeWall Panels</title>
+    <meta name="description" content="Browse our complete collection of 30+ premium wall panels in various styles and finishes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --warm-terracotta: hsl(15, 70%, 50%);
+            --warm-gold: hsl(45, 85%, 60%);
+            --warm-walnut: hsl(25, 35%, 30%);
+            --warm-beige: hsl(35, 40%, 85%);
+            --warm-cream: hsl(40, 25%, 95%);
+            --foreground: hsl(25, 35%, 20%);
+            --muted-foreground: hsl(25, 20%, 45%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--warm-cream);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--warm-terracotta);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--foreground);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--warm-terracotta);
+        }
+        
+        .page-hero {
+            background: var(--warm-terracotta);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+        
+        .filters {
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .filter-group {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid var(--warm-beige);
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--warm-terracotta);
+            color: var(--warm-terracotta);
+        }
+        
+        .filter-btn.active {
+            background: var(--warm-terracotta);
+            color: white;
+            border-color: var(--warm-terracotta);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--warm-beige);
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--warm-walnut);
+        }
+        
+        .product-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--warm-terracotta);
+            margin-bottom: 1rem;
+        }
+        
+        .color-swatches {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .color-swatch {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .color-swatch:hover {
+            transform: scale(1.1);
+            border-color: var(--warm-terracotta);
+        }
+        
+        .color-swatch.active {
+            border-color: var(--warm-terracotta);
+            border-width: 3px;
+        }
+        
+        footer {
+            background: var(--warm-walnut);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">LuxeWall</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="inspiration.html">Inspiration</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-hero">
+        <div class="container">
+            <h1>Our Complete Collection</h1>
+            <p>Explore 30+ premium wall panel designs</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="filters">
+            <h3>Filter by Material</h3>
+            <div class="filter-group">
+                <button class="filter-btn active" onclick="filterProducts('all', 'category')">All</button>
+                <button class="filter-btn" onclick="filterProducts('Wood', 'category')">Wood</button>
+                <button class="filter-btn" onclick="filterProducts('MDF', 'category')">MDF</button>
+                <button class="filter-btn" onclick="filterProducts('PVC', 'category')">PVC</button>
+            </div>
+            
+            <h3>Filter by Style</h3>
+            <div class="filter-group">
+                <button class="filter-btn active" onclick="filterProducts('all', 'style')">All</button>
+                <button class="filter-btn" onclick="filterProducts('Modern', 'style')">Modern</button>
+                <button class="filter-btn" onclick="filterProducts('Classic', 'style')">Classic</button>
+                <button class="filter-btn" onclick="filterProducts('Textured', 'style')">Textured</button>
+            </div>
+        </div>
+
+        <div class="products-grid" id="products-container"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 LuxeWall Panels. All rights reserved.</p>
+    </footer>
+
+    <script src="products-data.js"></script>
+    <script>
+        const allProducts = [
+  { id: '1', name: 'Heritage Oak Panel', description: 'Timeless oak grain pattern with natural warmth', category: 'Wood', style: 'Classic', price: 89.99, colors: [{ name: 'Natural Oak', code: '#D4A574', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' }, { name: 'Dark Walnut', code: '#5C4033', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }, { name: 'Whitewash', code: '#F5F5DC', imageUrl: 'https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=800' }, { name: 'Ebony', code: '#3B3B3B', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }] },
+  { id: '2', name: 'Modern Fluted Wall', description: 'Contemporary vertical grooves creating depth', category: 'MDF', style: 'Modern', price: 79.99, colors: [{ name: 'Warm Beige', code: '#E8D5C4', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Terracotta', code: '#C74A33', imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800' }, { name: 'Sage Green', code: '#9CA777', imageUrl: 'https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?w=800' }, { name: 'Charcoal', code: '#4A4A4A', imageUrl: 'https://images.unsplash.com/photo-1615460549969-36fa19521a4f?w=800' }] },
+  { id: '3', name: 'Rustic Barn Board', description: 'Reclaimed wood aesthetic with weathered character', category: 'Wood', style: 'Classic', price: 94.99, colors: [{ name: 'Weathered Grey', code: '#8B8680', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }, { name: 'Rustic Brown', code: '#7A5C4D', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }, { name: 'Vintage White', code: '#F0EDE5', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Tobacco', code: '#6B4423', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }] },
+  { id: '4', name: 'Geometric 3D Tiles', description: 'Bold dimensional patterns for modern walls', category: 'PVC', style: 'Modern', price: 69.99, colors: [{ name: 'Pure White', code: '#FFFFFF', imageUrl: 'https://images.unsplash.com/photo-1618221381711-42ca8ab6e908?w=800' }, { name: 'Soft Grey', code: '#C8C8C8', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }, { name: 'Matte Black', code: '#2B2B2B', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Champagne', code: '#E5D7C6', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }] },
+  { id: '5', name: 'Chevron Elegance', description: 'Sophisticated chevron pattern', category: 'Wood', style: 'Modern', price: 99.99, colors: [{ name: 'Honey Oak', code: '#C89F5D', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }, { name: 'Espresso', code: '#4A2C2A', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }, { name: 'Natural Pine', code: '#D9C7A8', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' }, { name: 'Grey Wash', code: '#A09D97', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }] },
+  { id: '6', name: 'Shiplap Classic', description: 'Traditional shiplap bringing cottage charm', category: 'MDF', style: 'Classic', price: 74.99, colors: [{ name: 'Coastal White', code: '#F7F5F0', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Sea Salt Grey', code: '#D3D0CB', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }, { name: 'Driftwood', code: '#B5A998', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }, { name: 'Navy Blue', code: '#2F4858', imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800' }] },
+  { id: '7', name: 'Bamboo Serenity', description: 'Sustainable bamboo with natural zen aesthetics', category: 'Wood', style: 'Modern', price: 84.99, colors: [{ name: 'Natural Bamboo', code: '#D4B896', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' }, { name: 'Carbonized', code: '#8B6F47', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }, { name: 'Blonde', code: '#E8D5B7', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Tiger Stripe', code: '#C4996B', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }] },
+  { id: '8', name: 'Wave Texture Panel', description: 'Flowing wave pattern creating dynamic movement', category: 'PVC', style: 'Modern', price: 72.99, colors: [{ name: 'Pearl White', code: '#F5F5F5', imageUrl: 'https://images.unsplash.com/photo-1618221381711-42ca8ab6e908?w=800' }, { name: 'Silver Metallic', code: '#C0C0C0', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }, { name: 'Gold Shimmer', code: '#D4AF37', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Bronze', code: '#A97142', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }] },
+  { id: '9', name: 'Herringbone Heritage', description: 'Classic herringbone pattern with timeless appeal', category: 'Wood', style: 'Classic', price: 104.99, colors: [{ name: 'Classic Oak', code: '#C19A6B', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' }, { name: 'Mahogany', code: '#5C3317', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }, { name: 'Ash Grey', code: '#B2ACA4', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }, { name: 'Teak', code: '#8B7355', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }] },
+  { id: '10', name: 'Linear Luxe', description: 'Sleek horizontal lines for contemporary sophistication', category: 'MDF', style: 'Modern', price: 77.99, colors: [{ name: 'Alabaster', code: '#EDEAE5', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Taupe', code: '#B38B6D', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Graphite', code: '#565656', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }, { name: 'Sand', code: '#C9B99B', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }] },
+  { id: '11', name: 'Stone Veneer Elegance', description: 'Natural stone appearance with easy installation', category: 'PVC', style: 'Textured', price: 82.99, colors: [{ name: 'Limestone', code: '#E1D4C2', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Slate Grey', code: '#6D7278', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }, { name: 'Sandstone', code: '#D9C6A3', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }, { name: 'River Rock', code: '#9C8B7B', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }] },
+  { id: '12', name: 'Artisan Carved Panel', description: 'Hand-carved inspired patterns for artistic expression', category: 'Wood', style: 'Classic', price: 119.99, colors: [{ name: 'Natural Cherry', code: '#9E5B3F', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }, { name: 'Black Walnut', code: '#3F2A1D', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }, { name: 'Maple', code: '#D4B896', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' }, { name: 'Aged Oak', code: '#8B7355', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }] },
+  { id: '13', name: 'Subway Tile Luxe', description: 'Classic subway tile aesthetic in panel form', category: 'PVC', style: 'Classic', price: 67.99, colors: [{ name: 'Glossy White', code: '#FFFFFF', imageUrl: 'https://images.unsplash.com/photo-1618221381711-42ca8ab6e908?w=800' }, { name: 'Mint Green', code: '#A8D8B9', imageUrl: 'https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?w=800' }, { name: 'Pale Blue', code: '#B8C7D4', imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800' }, { name: 'Cream', code: '#F5EFE0', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }] },
+  { id: '14', name: 'Reclaimed Plank', description: 'Authentic reclaimed wood character', category: 'Wood', style: 'Classic', price: 109.99, colors: [{ name: 'Vintage Brown', code: '#7A5C4D', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }, { name: 'Weathered Oak', code: '#A89882', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }, { name: 'Barn Red', code: '#8B4545', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }, { name: 'Faded Pine', code: '#C6B89E', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' }] },
+  { id: '15', name: 'Diamond Tufted', description: 'Upholstered luxury with diamond button detail', category: 'MDF', style: 'Classic', price: 134.99, colors: [{ name: 'Ivory Velvet', code: '#F5F0E8', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Grey Velvet', code: '#9B9B9B', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }, { name: 'Navy Velvet', code: '#2C3E50', imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800' }, { name: 'Burgundy', code: '#7A2E2E', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }] },
+  { id: '16', name: 'Corrugated Modern', description: 'Industrial chic with corrugated metal aesthetic', category: 'PVC', style: 'Modern', price: 71.99, colors: [{ name: 'Zinc', code: '#D4D4D4', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }, { name: 'Copper', code: '#B87333', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }, { name: 'Aged Iron', code: '#545454', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Brass', code: '#B5A642', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }] },
+  { id: '17', name: 'Moroccan Tile', description: 'Exotic Moroccan patterns for global style', category: 'PVC', style: 'Textured', price: 76.99, colors: [{ name: 'Cobalt Blue', code: '#0047AB', imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800' }, { name: 'Terracotta', code: '#C74A33', imageUrl: 'https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?w=800' }, { name: 'Sage Green', code: '#9CA777', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Cream', code: '#F5EFE0', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }] },
+  { id: '18', name: 'Vertical Garden Panel', description: 'Living wall aesthetic with preserved moss', category: 'MDF', style: 'Modern', price: 144.99, colors: [{ name: 'Forest Moss', code: '#4A7C59', imageUrl: 'https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?w=800' }, { name: 'Sage Blend', code: '#9CAF88', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Olive Mix', code: '#6B705C', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }, { name: 'Spring Green', code: '#8FBC8F', imageUrl: 'https://images.unsplash.com/photo-1618221381711-42ca8ab6e908?w=800' }] },
+  { id: '19', name: 'Hexagon Honeycomb', description: 'Geometric hexagon pattern creating modern impact', category: 'PVC', style: 'Modern', price: 73.99, colors: [{ name: 'White Matte', code: '#F5F5F5', imageUrl: 'https://images.unsplash.com/photo-1618221381711-42ca8ab6e908?w=800' }, { name: 'Natural Wood', code: '#C19A6B', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' }, { name: 'Black Satin', code: '#2B2B2B', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Gold Accent', code: '#D4AF37', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }] },
+  { id: '20', name: 'Leather Quilted', description: 'Sophisticated quilted leather for ultimate luxury', category: 'MDF', style: 'Classic', price: 149.99, colors: [{ name: 'Cognac', code: '#8B4513', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }, { name: 'Black Leather', code: '#1C1C1C', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Caramel', code: '#C68642', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Cream', code: '#F5F0E8', imageUrl: 'https://images.unsplash.com/photo-1618221381711-42ca8ab6e908?w=800' }] },
+  { id: '21', name: 'Scandinavian Pine', description: 'Minimalist Nordic aesthetic with clean lines', category: 'Wood', style: 'Modern', price: 89.99, colors: [{ name: 'Nordic White', code: '#F5F5F0', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Natural Pine', code: '#D9C7A8', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' }, { name: 'Light Grey', code: '#D3D0CB', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }, { name: 'Birch', code: '#E8D5B7', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }] },
+  { id: '22', name: 'Victorian Wainscoting', description: 'Traditional wainscoting for classic elegance', category: 'MDF', style: 'Classic', price: 94.99, colors: [{ name: 'Antique White', code: '#F7F5F0', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Cream', code: '#F5EFE0', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Light Taupe', code: '#B38B6D', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }, { name: 'Dove Grey', code: '#A09D97', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }] },
+  { id: '23', name: 'Brick Veneer Urban', description: 'Industrial brick aesthetic without the weight', category: 'PVC', style: 'Textured', price: 79.99, colors: [{ name: 'Red Brick', code: '#8B4545', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }, { name: 'White Brick', code: '#F5F5F5', imageUrl: 'https://images.unsplash.com/photo-1618221381711-42ca8ab6e908?w=800' }, { name: 'Grey Brick', code: '#6D7278', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }, { name: 'Vintage Brick', code: '#7A5C4D', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }] },
+  { id: '24', name: 'Art Deco Geometric', description: 'Bold Art Deco patterns for glamorous spaces', category: 'MDF', style: 'Modern', price: 124.99, colors: [{ name: 'Gold Leaf', code: '#D4AF37', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Midnight Blue', code: '#2C3E50', imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800' }, { name: 'Champagne', code: '#E5D7C6', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Black Onyx', code: '#1C1C1C', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }] },
+  { id: '25', name: 'Tropical Bamboo Weave', description: 'Woven bamboo texture for exotic appeal', category: 'Wood', style: 'Textured', price: 99.99, colors: [{ name: 'Natural Weave', code: '#D4B896', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' }, { name: 'Dark Chocolate', code: '#3F2A1D', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }, { name: 'Honey Gold', code: '#C89F5D', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Espresso', code: '#4A2C2A', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }] },
+  { id: '26', name: 'Metallic Panels', description: 'Modern metallic finish for contemporary design', category: 'PVC', style: 'Modern', price: 114.99, colors: [{ name: 'Brushed Steel', code: '#C0C0C0', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }, { name: 'Copper Glow', code: '#B87333', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }, { name: 'Gold Shimmer', code: '#D4AF37', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Rose Gold', code: '#B76E79', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }] },
+  { id: '27', name: 'Rustic Slate Texture', description: 'Natural slate texture for earthy sophistication', category: 'PVC', style: 'Textured', price: 87.99, colors: [{ name: 'Charcoal Slate', code: '#4A4A4A', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }, { name: 'Blue Slate', code: '#6D7278', imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800' }, { name: 'Green Slate', code: '#6B705C', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }, { name: 'Copper Slate', code: '#8B7355', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }] },
+  { id: '28', name: 'French Country Board', description: 'Rustic French countryside charm', category: 'Wood', style: 'Classic', price: 104.99, colors: [{ name: 'Provencal White', code: '#F5F0E8', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Lavender Grey', code: '#D3D0CB', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }, { name: 'Olive Wood', code: '#8B7355', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }, { name: 'Sage', code: '#9CAF88', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }] },
+  { id: '29', name: 'Minimalist Concrete', description: 'Industrial concrete aesthetic simplified', category: 'PVC', style: 'Modern', price: 84.99, colors: [{ name: 'Raw Concrete', code: '#9B9B9B', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }, { name: 'Polished Grey', code: '#D4D4D4', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Dark Cement', code: '#565656', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }, { name: 'Warm Concrete', code: '#A89882', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' }] },
+  { id: '30', name: 'Japanese Shoji Screen', description: 'Zen-inspired translucent panels for serenity', category: 'MDF', style: 'Modern', price: 129.99, colors: [{ name: 'Rice Paper', code: '#F5F5F0', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' }, { name: 'Natural Bamboo', code: '#D9C7A8', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' }, { name: 'Cherry Blossom', code: '#F5D5E0', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }, { name: 'Ebony Frame', code: '#2B2B2B', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' }] }
+];
+
+        let currentFilter = { category: 'all', style: 'all' };
+
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            const filtered = allProducts.filter(p => 
+                (currentFilter.category === 'all' || p.category === currentFilter.category) &&
+                (currentFilter.style === 'all' || p.style === currentFilter.style)
+            );
+
+            container.innerHTML = filtered.map((product, index) => `
+                <div class="product-card">
+                    <img src="${product.colors[0].imageUrl}" 
+                         alt="${product.name}" 
+                         class="product-image" 
+                         id="prod-img-${index}">
+                    <div class="product-info">
+                        <span class="product-badge">${product.category} • ${product.style}</span>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <p class="product-price">$${product.price}</p>
+                        <div class="color-swatches">
+                            ${product.colors.map((color, cIdx) => `
+                                <div class="color-swatch ${cIdx === 0 ? 'active' : ''}" 
+                                     style="background-color: ${color.code}"
+                                     title="${color.name}"
+                                     onclick="changeProductColor(${index}, ${cIdx}, '${color.imageUrl}')">
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function changeProductColor(productIndex, colorIndex, imageUrl) {
+            const img = document.getElementById(`prod-img-${productIndex}`);
+            const swatches = document.querySelectorAll(`.product-card:nth-child(${productIndex + 1}) .color-swatch`);
+            
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = imageUrl;
+                img.style.opacity = '1';
+            }, 200);
+            
+            swatches.forEach((swatch, i) => {
+                swatch.classList.toggle('active', i === colorIndex);
+            });
+        }
+
+        function filterProducts(value, type) {
+            currentFilter[type] = value;
+            renderProducts();
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>
