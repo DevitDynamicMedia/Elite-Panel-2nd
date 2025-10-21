@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeWall Panels | Premium Wall Paneling Solutions</title>
+    <meta name="description" content="Transform your space with our luxurious collection of premium wall panels. Explore 30+ designs in multiple finishes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --warm-terracotta: hsl(15, 70%, 50%);
+            --warm-gold: hsl(45, 85%, 60%);
+            --warm-walnut: hsl(25, 35%, 30%);
+            --warm-beige: hsl(35, 40%, 85%);
+            --warm-cream: hsl(40, 25%, 95%);
+            --foreground: hsl(25, 35%, 20%);
+            --muted-foreground: hsl(25, 20%, 45%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--warm-cream);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--warm-terracotta);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--foreground);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--warm-terracotta);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--warm-terracotta);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--warm-walnut);
+            transform: translateY(-2px);
+        }
+        
+        /* Featured Products */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--foreground);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--foreground);
+        }
+        
+        .product-description {
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--warm-terracotta);
+            margin-bottom: 1rem;
+        }
+        
+        .color-swatches {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .color-swatch {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .color-swatch:hover {
+            transform: scale(1.1);
+            border-color: var(--warm-terracotta);
+        }
+        
+        .color-swatch.active {
+            border-color: var(--warm-terracotta);
+            border-width: 3px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--warm-walnut);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">LuxeWall</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="inspiration.html">Inspiration</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1>Transform Your Space with Warmth & Style</h1>
+            <p>Discover our collection of luxurious wall panels in over 30 stunning designs</p>
+            <a href="products.html" class="btn">View Collection</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Collection</h2>
+            <div class="products-grid" id="featured-products"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 LuxeWall Panels. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const featuredProducts = [
+            {
+                id: '1',
+                name: 'Heritage Oak Panel',
+                description: 'Timeless oak grain pattern with natural warmth',
+                price: 89.99,
+                colors: [
+                    { name: 'Natural Oak', code: '#D4A574', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' },
+                    { name: 'Dark Walnut', code: '#5C4033', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' },
+                    { name: 'Whitewash', code: '#F5F5DC', imageUrl: 'https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=800' },
+                    { name: 'Ebony', code: '#3B3B3B', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }
+                ]
+            },
+            {
+                id: '2',
+                name: 'Modern Fluted Wall',
+                description: 'Contemporary vertical grooves creating depth',
+                price: 79.99,
+                colors: [
+                    { name: 'Warm Beige', code: '#E8D5C4', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' },
+                    { name: 'Terracotta', code: '#C74A33', imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800' },
+                    { name: 'Sage Green', code: '#9CA777', imageUrl: 'https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?w=800' },
+                    { name: 'Charcoal', code: '#4A4A4A', imageUrl: 'https://images.unsplash.com/photo-1615460549969-36fa19521a4f?w=800' }
+                ]
+            },
+            {
+                id: '3',
+                name: 'Rustic Barn Board',
+                description: 'Reclaimed wood aesthetic with weathered character',
+                price: 94.99,
+                colors: [
+                    { name: 'Weathered Grey', code: '#8B8680', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' },
+                    { name: 'Rustic Brown', code: '#7A5C4D', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' },
+                    { name: 'Vintage White', code: '#F0EDE5', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' },
+                    { name: 'Tobacco', code: '#6B4423', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' }
+                ]
+            },
+            {
+                id: '4',
+                name: 'Geometric 3D Tiles',
+                description: 'Bold dimensional patterns for modern walls',
+                price: 69.99,
+                colors: [
+                    { name: 'Pure White', code: '#FFFFFF', imageUrl: 'https://images.unsplash.com/photo-1618221381711-42ca8ab6e908?w=800' },
+                    { name: 'Soft Grey', code: '#C8C8C8', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' },
+                    { name: 'Matte Black', code: '#2B2B2B', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' },
+                    { name: 'Champagne', code: '#E5D7C6', imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800' }
+                ]
+            },
+            {
+                id: '5',
+                name: 'Chevron Elegance',
+                description: 'Sophisticated chevron pattern adding visual interest',
+                price: 99.99,
+                colors: [
+                    { name: 'Honey Oak', code: '#C89F5D', imageUrl: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800' },
+                    { name: 'Espresso', code: '#4A2C2A', imageUrl: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800' },
+                    { name: 'Natural Pine', code: '#D9C7A8', imageUrl: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800' },
+                    { name: 'Grey Wash', code: '#A09D97', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' }
+                ]
+            },
+            {
+                id: '6',
+                name: 'Shiplap Classic',
+                description: 'Traditional shiplap bringing cottage charm',
+                price: 74.99,
+                colors: [
+                    { name: 'Coastal White', code: '#F7F5F0', imageUrl: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800' },
+                    { name: 'Sea Salt Grey', code: '#D3D0CB', imageUrl: 'https://images.unsplash.com/photo-1618220924273-338d82d6b886?w=800' },
+                    { name: 'Driftwood', code: '#B5A998', imageUrl: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800' },
+                    { name: 'Navy Blue', code: '#2F4858', imageUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800' }
+                ]
+            }
+        ];
+
+        function renderProducts() {
+            const container = document.getElementById('featured-products');
+            container.innerHTML = featuredProducts.map((product, index) => `
+                <div class="product-card">
+                    <img src="${product.colors[0].imageUrl}" 
+                         alt="${product.name}" 
+                         class="product-image" 
+                         id="product-image-${index}">
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <p class="product-price">$${product.price}</p>
+                        <div class="color-swatches">
+                            ${product.colors.map((color, colorIndex) => `
+                                <div class="color-swatch ${colorIndex === 0 ? 'active' : ''}" 
+                                     style="background-color: ${color.code}"
+                                     title="${color.name}"
+                                     onclick="changeColor(${index}, ${colorIndex}, '${color.imageUrl}')">
+                                </div>
+                            `).join('')}
+                        </div>
+                        <a href="products.html" class="btn" style="display: block; text-align: center;">See Details</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function changeColor(productIndex, colorIndex, imageUrl) {
+            const img = document.getElementById(`product-image-${productIndex}`);
+            const swatches = document.querySelectorAll(`.product-card:nth-child(${productIndex + 1}) .color-swatch`);
+            
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = imageUrl;
+                img.style.opacity = '1';
+            }, 200);
+            
+            swatches.forEach((swatch, i) => {
+                swatch.classList.toggle('active', i === colorIndex);
+            });
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>
